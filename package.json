@@ -1,0 +1,50 @@
+{
+  "name": "belajar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.12.1",
+    "@typescript-eslint/parser": "^8.12.1",
+    "eslint": "^9.13.0",
+    "eslint-config-import": "^0.13.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "globals": "^15.11.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.1"
+  },
+  "scripts": {
+    "start": "npx tsc -w",
+    "dev": "npx nodemon",
+    "lint": "npx eslint ./src --ext .ts",
+    "lint:fix": "npx eslint ./src --ext .ts --fix",
+    "build": "tsc && cp .env ./build/.env",
+    "prod": "node ./build/index.js",
+    "format": "npx prettier . --write",
+    "prepare": "npx husky install",
+    "check-types": "npx tsc --noEmit --pretty",
+    "check-lint": "npx eslint . --ext ts --ext tsx --ext js",
+    "check-format": "npx prettier . --check",
+    "test": "npx jest --detectOpenHandles"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged ng lint ng test",
+      "pre-push": "ng build --aot true"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
